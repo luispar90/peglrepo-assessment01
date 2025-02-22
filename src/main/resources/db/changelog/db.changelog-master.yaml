@@ -1,0 +1,76 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: lparaguay
+      changes:
+        - createTable:
+            tableName: department
+            columns:
+              - column:
+                  name: id
+                  type: INTEGER
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: department
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 2
+      author: lparaguay
+      changes:
+        - createTable:
+            tableName: job
+            columns:
+              - column:
+                  name: id
+                  type: INTEGER
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: job
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 3
+      author: lparaguay
+      changes:
+        - createTable:
+            tableName: hired_employee
+            columns:
+              - column:
+                  name: id
+                  type: INTEGER
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: datetime
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: department_id
+                  type: INTEGER
+                  constraints:
+                    nullable: true
+                    foreignKeyName: fk_employee_department
+                    references: department(id)
+              - column:
+                  name: job_id
+                  type: INTEGER
+                  constraints:
+                    nullable: true
+                    foreignKeyName: fk_employee_job
+                    references: job(id)
