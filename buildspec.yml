@@ -8,12 +8,6 @@ phases:
     commands:
       - echo "Installing dependencies and generating jar"
       - mvn clean package -DskipTests
-      - echo "Current directory:"
-      - pwd
-      - echo "Listing files:"
-      - ls -l
-      - echo "Listing files:"
-      - ls -l target/
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
 
